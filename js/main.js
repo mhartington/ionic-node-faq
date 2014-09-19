@@ -12,7 +12,10 @@ $('a').click(function() {
     return false;
 });
 
-/* Fixed docked menu */
+/* Fixed docked menu 
+ * Stolen with love
+ * From Ionic <3
+ * */
   (function() {
     var activeId;
     fixedMenu = $('.docked');
@@ -51,7 +54,7 @@ $('a').click(function() {
             fixedMenu
               .css({
                 width: fixedMenu.width() + 'px',
-                top: '20px'
+                top: '0px',
               })
               .addClass("fixed-menu");
           }
@@ -62,7 +65,7 @@ $('a').click(function() {
               .removeClass("fixed-menu")
               .css({
                 width: 'auto',
-                top: '20px'
+                top: '0px'
               });
           }
           if(scrollTop < 200) {
