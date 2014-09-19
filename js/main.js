@@ -12,7 +12,7 @@ $('a').click(function() {
     return false;
 });
 
-/* Fixed docked menu 
+/* Fixed docked menu
  * Stolen with love
  * From Ionic <3
  * */
@@ -131,4 +131,13 @@ $('a').click(function() {
   })();
 
 
+
+
+// So when you change the select
+// it will scroll
+$("select").change(function () {
+        if ($(this).val() != '') {
+          window.location.hash = $(this).val();
+        }
+      });
 });

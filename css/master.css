@@ -238,6 +238,11 @@ body {
   background: linear-gradient(to right, #296ad4, #4e8ef7);
   color: #fff;
 }
+@media only screen and (max-width: 680px) {
+  .header {
+    text-align: center;
+  }
+}
 .header h1 {
   font-size: 70px;
   font-weight: 100 !important;
@@ -361,10 +366,19 @@ hr {
   height: 1px;
 }
 code {
+  background: #ebf0f6;
+  color: #3c4f6e;
+}
+pre {
+  padding: 15px;
   color: #3c4f6e;
   background: #ebf0f6;
-  display: block;
-  padding: 15px;
+}
+@media only screen and (max-width: 680px) {
+  pre {
+    white-space: normal;
+    overflow-x: scroll;
+  }
 }
 a.post {
   text-decoration: none;
@@ -383,6 +397,9 @@ a.post:hover {
   .sm-only {
     display: block;
     margin: auto;
+    background-color: #fff;
+    width: 100%;
+    font-size: 17px;
   }
 }
 .fixed-menu {
