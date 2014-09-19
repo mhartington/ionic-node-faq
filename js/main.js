@@ -1,25 +1,16 @@
 $(document).ready( function(){
 
 console.log('jquery loaded');
-// $('a[href*=#]:not([href=#])').click(function() {
-//   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-//     var target = $(this.hash);
-//     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-//     if (target.length) {
-//       smoothScrollingTo = '#' + target.attr('id');
-//       $('html,body').animate({
-//           scrollTop: target.offset().top
-//         }, 100, 'swing',
-//         function() {
-//           if (docContent) {
-//             previewSection(smoothScrollingTo);
-//           }
-//           smoothScrollingTo = undefined;
-//         });
-//       return false;
-//     }
-//   }
-// });
+var $root = $('html, body');
+$('a').click(function() {
+    var href = $.attr(this, 'href');
+    $root.animate({
+        scrollTop: $(href).offset().top
+    }, 500, function () {
+        window.location.hash = href;
+    });
+    return false;
+});
 
 /* Fixed docked menu */
   (function() {
