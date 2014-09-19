@@ -1,0 +1,8 @@
+<p>This one is pretty extreme and cause a lot of frustration. You try to use any of the Cordova/Ionic commands and get this error.</p>
+<pre><code class="lang-bash">Current Working Directory is not Cordova-based project
+</code></pre>
+<p>At this point you’re unable to do anything further with your project. So why does this happen? Various reason, but mostly something gets corrupted with your environment configuration. You can see a <a href="https://github.com/driftyco/ionic/issues/2213#issuecomment-55912785">thread</a> where this happened for one particular user.</p>
+<p>For his case, the solution was to run</p>
+<pre><code class="lang-bash">$ cordova create .
+</code></pre>
+<p>Basically a hidden folder that should be there wasn’t. Running that command above fixes that issue.</p>

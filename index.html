@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta charset="utf8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="description" content="description of your site"><meta name="author" content="author of the site"><title></title><link rel="stylesheet" href="css/master.css"></head><body><div class="header"><h1>Node FAQ</h1></div><div class="content"><h2>When working with Cordova and Ionic, Node is going to be your best friend. Specifically working with Node and the Command Line. Yet getting things set up often seems to be a challenge, especially when it comes to setting up things cross platform (Mac, Windows, Linux).</h2><h2>Below are a few issues that are not necessarily an Ionic Framework issue, but common pitfalls seen related to Cordova/Node/NPM/Android:</h2><select class="sm-only"><option><a href="#Setting up the Android SDK" class="post"><p>Setting up the Android SDK</p></a></option><option><a href="#Genymotion to replace the default android emulator" class="post"><p>Genymotion to replace the default android emulator</p></a></option><option><a href="#No Ionic command works" class="post"><p>No Ionic command works</p></a></option><option><a href="#iOS emulate issues" class="post"><p>iOS emulate issues</p></a></option><option><a href="#Randomly projects unable to locate plugins" class="post"><p>Randomly projects unable to locate plugins</p></a></option><option><a href="#Current Working Directory is not Cordova-based project" class="post"><p>Current Working Directory is not Cordova-based project</p></a></option><option><a href="#Update Cordova, now I can’t do anything" class="post"><p>Update Cordova, now I can’t do anything</p></a></option><option><a href="#Windows unable to add plugin from Github" class="post"><p>Windows unable to add plugin from Github</p></a></option></select><div class="left"><div class="docked"><a href="#SettinguptheAndroidSDK" class="post"><h4>Setting up the Android SDK</h4></a><a href="#Genymotiontoreplacethedefaultandroidemulator" class="post"><h4>Genymotion to replace the default android emulator</h4></a><a href="#NoIoniccommandworks" class="post"><h4>No Ionic command works</h4></a><a href="#iOSemulateissues" class="post"><h4>iOS emulate issues</h4></a><a href="#Randomlyprojectsunabletolocateplugins" class="post"><h4>Randomly projects unable to locate plugins</h4></a><a href="#CurrentWorkingDirectoryisnotCordova-basedproject" class="post"><h4>Current Working Directory is not Cordova-based project</h4></a><a href="#UpdateCordova,nowIcan’tdoanything" class="post"><h4>Update Cordova, now I can’t do anything</h4></a><a href="#WindowsunabletoaddpluginfromGithub" class="post"><h4>Windows unable to add plugin from Github</h4></a></div></div><div class="right"><div id="SettinguptheAndroidSDK" class="article"><h2>Setting up the Android SDK</h2><p>Setting the Android SDK is a complicated process for Windows and Linux.</p>
+<p>Ubuntu
+Recently, Ubuntu  has gotten an awesome tool called Ubuntu Developer Tools Center and with it you can installed the Android SDK and Android Studio. I’m not going to go over the details, but you can checkout this <a href="http://www.webupd8.org/2014/09/canonical-releases-ubuntu-developer.html">blog post</a> and see the steps.</p>
+<p>Windows
+The setup process for Android on Windows has been covered in depth on Ionic Learn Site.</p>
+<p><a href="http://learn.ionicframework.com/videos/windows-android/">http://learn.ionicframework.com/videos/windows-android/</a>
+The only thing I can add is to include installing git during your setup.</p>
+<p>Mac
+Mac’s tend to have the lest problems when setting up and android environment. There a few ways to handle it and this is just one of them. The end goal is to have the SDK installed, install java, install ant.</p>
+<p>Install Java - This can be by going to [this page}(<a href="http://support.apple.com/kb/dl1572">http://support.apple.com/kb/dl1572</a>)
+Install ANT - The quickest way to install Apache ANT is with home-brew.</p>
+<pre><code class="lang-bash">$ brew install ant
+</code></pre>
+<p>Install the SDK - This can be done a few different ways. The one I like to use is by installing <a href="https://developer.android.com/sdk/installing/studio.html">Android Studio</a>. This will let you install an editor that comes bundled with the Android SDK. So now our SDK is in our Applications Folder.</p>
+<p>Edit .bash_profile - So if you’ve followed the steps above, you’ll need to edit your .bash_profile to include the following. If you didn’t install Android Studio, then no problem. You’ll just need to change the path to the SDK. You want to include the SDK tools and SDK Platform-tools.</p>
+<pre><code class="lang-bash">vim ~/.bash_profile
+</code></pre>
+<p>Add this:</p>
+<pre><code class="lang-bash">export PATH=${PATH}:/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=${JAVA_HOME}/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+</code></pre>
+<p>With that, enter <code>source ~/.bash_profile</code> to update everything.</p>
+<hr></div><div id="Genymotiontoreplacethedefaultandroidemulator" class="article"><h2>Genymotion to replace the default android emulator</h2><p>This helpful tip cannot be stressed enough! Even when working natively, the android emulator is a pain. It’s slow to boot, becomes unresponsive and locks up easily. Thankfully <a href="http://www.genymotion.com/">Genymotion</a> is a great replacement. It uses a virtual machine to emulate android devices and does it perfectly. Once thing to remember, if you want to deploy to a genymotion device, your computer will treat it as an actual connect machine. So instead of running</p>
+<pre><code class="lang-bash">$ ionic emulate android
+</code></pre>
+<p>Use <code>run</code> instead.</p>
+<pre><code class="lang-bash">$ ionic run android
+</code></pre>
+<hr></div><div id="NoIoniccommandworks" class="article"><h2>No Ionic command works</h2><p>If you’re a node developer, you’re probably using the latest and greatest release of node on your system. While this is great for testing apps with node, Cordova and Ionic need to have some stability. When doing anything with the command line and ionic, always use a stable release of Ionic.</p>
+<hr></div><div id="iOSemulateissues" class="article"><h2>iOS emulate issues</h2><p>Starting an iOS emulator from the command line is a really powerful feature. It gets rid of the need to open up xCode and keeps a nice terminal-only workflow. But when you try to use <code>ionic emulate ios</code> it throws an awful error.</p>
+<pre><code class="lang-bash">Error: ios-sim was not found. Please download, build and install version 1.7 or greater from https://github.com/phonegap/ios-sim into your path. Or &#39;npm install -g ios-sim&#39; using node.js: http://nodejs.org/
+</code></pre>
+<p>Well this is because you need to install a utility package called ios-sim. This package allows you to access the iOS simulator from the command line. This can be installed with a simple <code>npm install</code>.</p>
+<pre><code class="lang-bash">$ sudo npm install -g ios-sim
+</code></pre>
+<p>With this installed, you’ll be able to emulate to the iso-simulator.</p>
+<hr></div><div id="Randomlyprojectsunabletolocateplugins" class="article"><h2>Randomly projects unable to locate plugins</h2><p>When you update an iOS project to a new version of Cordova, sometimes you will get an error saying it was unable to locate a plugin. You open up Xcode, try to run and build from there and get this error in your console.</p>
+<pre><code>2014-11-12 14:36:18.284 Tell The DJ[14955:c07] ERROR: Plugin &#39;Device&#39; not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2013-08-23 14:36:18.284 Tell The DJ[14955:c07] -[CDVCommandQueue executePending] [Line 116] FAILED pluginJSON = [
+  &quot;Device1096677259&quot;,
+  &quot;Device&quot;,
+  &quot;getDeviceInfo&quot;,
+  [
+
+  ]
+]
+</code></pre><p>This can happen for a number of reasons, but the most common is manually adding files to the native project. The linking process during a build cycle gets broken and none of the native files are moved over. To fix this, delete the <code>ios.json</code> file in the plugins folder. This will make Cordova have to recopy all the plugin files.</p>
+<p>In more extreme cases, sometimes a complete removal of the project is needed.</p>
+<hr></div><div id="CurrentWorkingDirectoryisnotCordova-basedproject" class="article"><h2>Current Working Directory is not Cordova-based project</h2><p>This one is pretty extreme and cause a lot of frustration. You try to use any of the Cordova/Ionic commands and get this error.</p>
+<pre><code class="lang-bash">Current Working Directory is not Cordova-based project
+</code></pre>
+<p>At this point you’re unable to do anything further with your project. So why does this happen? Various reason, but mostly something gets corrupted with your environment configuration. You can see a <a href="https://github.com/driftyco/ionic/issues/2213#issuecomment-55912785">thread</a> where this happened for one particular user.</p>
+<p>For his case, the solution was to run</p>
+<pre><code class="lang-bash">$ cordova create .
+</code></pre>
+<p>Basically a hidden folder that should be there wasn’t. Running that command above fixes that issue.</p>
+<hr></div><div id="UpdateCordova,nowIcan’tdoanything" class="article"><h2>Update Cordova, now I can’t do anything</h2><p>When Cordova pushes a new version, it’s always best to update. So you run this command to update the Cordova binaries.</p>
+<pre><code class="lang-bash">$ sudo npm update -g cordova
+</code></pre>
+<p>Great, but when you try to do anything in a project, you’ll get an error. Well this is because there are actually different versions of Cordova for each platform. So from inside your project you need to run Cordova’s update command.</p>
+<pre><code class="lang-bash">$ cordova update platform ios
+$ cordova update platform android
+</code></pre>
+<p>Now all your platform specific versions of Cordova are updated.</p>
+<hr></div><div id="WindowsunabletoaddpluginfromGithub" class="article"><h2>Windows unable to add plugin from Github</h2><p>So you found this awesome plugin on github that you want to use for your app. So lets try to install it.</p>
+<pre><code class="lang-bash">ionic plugin add http://github.com/user/awesome-plugin
+</code></pre>
+<p>But then another error comes up. Whats going on?
+So something that Cordova doesn’t mention is that you need to have git setup for installing plugins from Github. Something like this can easily be overlooked, but thankfully it’s as easy to fix. Just visit <a href="http://git-scm.com/">the git website</a>, install and set up git, and you’re good to go.</p>
+<hr></div></div></div><div class="footer"></div></body><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script src="js/sticky.js"></script><script src="js/main.js"></script></html>

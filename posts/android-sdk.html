@@ -1,0 +1,24 @@
+<p>Setting the Android SDK is a complicated process for Windows and Linux.</p>
+<p>Ubuntu
+Recently, Ubuntu  has gotten an awesome tool called Ubuntu Developer Tools Center and with it you can installed the Android SDK and Android Studio. I’m not going to go over the details, but you can checkout this <a href="http://www.webupd8.org/2014/09/canonical-releases-ubuntu-developer.html">blog post</a> and see the steps.</p>
+<p>Windows
+The setup process for Android on Windows has been covered in depth on Ionic Learn Site.</p>
+<p><a href="http://learn.ionicframework.com/videos/windows-android/">http://learn.ionicframework.com/videos/windows-android/</a>
+The only thing I can add is to include installing git during your setup.</p>
+<p>Mac
+Mac’s tend to have the lest problems when setting up and android environment. There a few ways to handle it and this is just one of them. The end goal is to have the SDK installed, install java, install ant.</p>
+<p>Install Java - This can be by going to [this page}(<a href="http://support.apple.com/kb/dl1572">http://support.apple.com/kb/dl1572</a>)
+Install ANT - The quickest way to install Apache ANT is with home-brew.</p>
+<pre><code class="lang-bash">$ brew install ant
+</code></pre>
+<p>Install the SDK - This can be done a few different ways. The one I like to use is by installing <a href="https://developer.android.com/sdk/installing/studio.html">Android Studio</a>. This will let you install an editor that comes bundled with the Android SDK. So now our SDK is in our Applications Folder.</p>
+<p>Edit .bash_profile - So if you’ve followed the steps above, you’ll need to edit your .bash_profile to include the following. If you didn’t install Android Studio, then no problem. You’ll just need to change the path to the SDK. You want to include the SDK tools and SDK Platform-tools.</p>
+<pre><code class="lang-bash">vim ~/.bash_profile
+</code></pre>
+<p>Add this:</p>
+<pre><code class="lang-bash">export PATH=${PATH}:/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=${JAVA_HOME}/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+</code></pre>
+<p>With that, enter <code>source ~/.bash_profile</code> to update everything.</p>

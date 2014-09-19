@@ -1,0 +1,7 @@
+<p>Starting an iOS emulator from the command line is a really powerful feature. It gets rid of the need to open up xCode and keeps a nice terminal-only workflow. But when you try to use <code>ionic emulate ios</code> it throws an awful error.</p>
+<pre><code class="lang-bash">Error: ios-sim was not found. Please download, build and install version 1.7 or greater from https://github.com/phonegap/ios-sim into your path. Or &#39;npm install -g ios-sim&#39; using node.js: http://nodejs.org/
+</code></pre>
+<p>Well this is because you need to install a utility package called ios-sim. This package allows you to access the iOS simulator from the command line. This can be installed with a simple <code>npm install</code>.</p>
+<pre><code class="lang-bash">$ sudo npm install -g ios-sim
+</code></pre>
+<p>With this installed, you’ll be able to emulate to the iso-simulator.</p>

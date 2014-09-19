@@ -1,0 +1,12 @@
+<p>When you update an iOS project to a new version of Cordova, sometimes you will get an error saying it was unable to locate a plugin. You open up Xcode, try to run and build from there and get this error in your console.</p>
+<pre><code>2014-11-12 14:36:18.284 Tell The DJ[14955:c07] ERROR: Plugin &#39;Device&#39; not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2013-08-23 14:36:18.284 Tell The DJ[14955:c07] -[CDVCommandQueue executePending] [Line 116] FAILED pluginJSON = [
+  &quot;Device1096677259&quot;,
+  &quot;Device&quot;,
+  &quot;getDeviceInfo&quot;,
+  [
+
+  ]
+]
+</code></pre><p>This can happen for a number of reasons, but the most common is manually adding files to the native project. The linking process during a build cycle gets broken and none of the native files are moved over. To fix this, delete the <code>ios.json</code> file in the plugins folder. This will make Cordova have to recopy all the plugin files.</p>
+<p>In more extreme cases, sometimes a complete removal of the project is needed.</p>
