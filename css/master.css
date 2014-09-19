@@ -392,10 +392,10 @@ a.post:hover {
 }
 .sm-only {
   display: none;
-  -webkit-appearance: none;
 }
 @media only screen and (max-width: 680px) {
   .sm-only {
+    -webkit-appearance: none;
     display: block;
     margin: auto;
     background-color: #fff;
