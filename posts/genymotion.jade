@@ -1,0 +1,14 @@
+---
+title: 'Genymotion to replace the default android emulator'
+id: genymotion
+---
+
+:markdown
+  This helpful tip cannot be stressed enough! Even when working natively, the android emulator is a pain. It’s slow to boot, becomes unresponsive and locks up easily. Thankfully [Genymotion](http://www.genymotion.com/) is a great replacement. It uses a virtual machine to emulate android devices and does it perfectly. Once thing to remember, if you want to deploy to a genymotion device, your computer will treat it as an actual connect machine. So instead of running
+  ```bash
+  $ ionic emulate android
+  ```
+  Use `run` instead.
+  ```bash
+  $ ionic run android
+  ```

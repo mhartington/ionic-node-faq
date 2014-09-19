@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .header
+    h1 Node FAQ
+
+  .content
+
+    h2 When working with Cordova and Ionic, Node is going to be your best friend. Specifically working with Node and the Command Line. Yet getting things set up often seems to be a challenge, especially when it comes to setting up things cross platform (Mac, Windows, Linux).
+    h2 Below are a few issues that are not necessarily an Ionic Framework issue, but common pitfalls seen related to Cordova/Node/NPM/Android:
+
+    select.sm-only
+      each post in site.posts
+        option
+            a.post(href='#' + post.title)
+              p= post.title
+    div.left
+      .docked
+        :markdown
+        each post in site.posts
+          a.post(href='#' + post.title.replace(/\s+/g, ''))
+            h4= post.title
+
+
+    .right
+      each post in site.posts
+        .article(id=  post.title.replace(/\s+/g, ''))
+
+          h2= post.title
+
+          != post.content
+          hr
+
+
+  .footer
