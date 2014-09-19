@@ -4,39 +4,37 @@ title: 'Setting up the Android SDK'
 ---
 
 :markdown
-    Setting the Android SDK is a complicated process for Windows and Linux.
+  Setting the Android SDK is a complicated process for Windows and Linux.
 
-    Ubuntu
-    Recently, Ubuntu  has gotten an awesome tool called Ubuntu Developer Tools Center and with it you can installed the Android SDK and Android Studio. I’m not going to go over the details, but you can checkout this [blog post](http://www.webupd8.org/2014/09/canonical-releases-ubuntu-developer.html) and see the steps.
+  Ubuntu
+  Recently, Ubuntu  has gotten an awesome tool called Ubuntu Developer Tools Center and with it you can installed the Android SDK and Android Studio. I’m not going to go over the details, but you can checkout this [blog post](http://www.webupd8.org/2014/09/canonical-releases-ubuntu-developer.html) and see the steps.
 
-    Windows
-    The setup process for Android on Windows has been covered in depth on Ionic Learn Site.
+  Windows
+  The setup process for Android on Windows has been covered in depth on [Ionic Learn Site.](http://learn.ionicframework.com/videos/windows-android/)
+  The only thing I can add is to include installing git during your setup.
 
-    http://learn.ionicframework.com/videos/windows-android/
-    The only thing I can add is to include installing git during your setup.
+  Mac
+  Mac’s tend to have the lest problems when setting up and android environment. There a few ways to handle it and this is just one of them. The end goal is to have the SDK installed, install java, install ant.
 
-    Mac
-    Mac’s tend to have the lest problems when setting up and android environment. There a few ways to handle it and this is just one of them. The end goal is to have the SDK installed, install java, install ant.
+  Install Java - This can be by going to [this page](http://support.apple.com/kb/dl1572)
+  Install ANT - The quickest way to install Apache ANT is with home-brew.
+  ```bash
+  $ brew install ant
+  ```
+  Install the SDK - This can be done a few different ways. The one I like to use is by installing [Android Studio](https://developer.android.com/sdk/installing/studio.html). This will let you install an editor that comes bundled with the Android SDK. So now our SDK is in our Applications Folder.
 
-    Install Java - This can be by going to [this page}(http://support.apple.com/kb/dl1572)
-    Install ANT - The quickest way to install Apache ANT is with home-brew.
-    ```bash
-    $ brew install ant
-    ```
-    Install the SDK - This can be done a few different ways. The one I like to use is by installing [Android Studio](https://developer.android.com/sdk/installing/studio.html). This will let you install an editor that comes bundled with the Android SDK. So now our SDK is in our Applications Folder.
+  Edit .bash_profile - So if you’ve followed the steps above, you’ll need to edit your .bash_profile to include the following. If you didn’t install Android Studio, then no problem. You’ll just need to change the path to the SDK. You want to include the SDK tools and SDK Platform-tools.
 
-    Edit .bash_profile - So if you’ve followed the steps above, you’ll need to edit your .bash_profile to include the following. If you didn’t install Android Studio, then no problem. You’ll just need to change the path to the SDK. You want to include the SDK tools and SDK Platform-tools.
-
-    ```bash
-    vim ~/.bash_profile
-    ```
-    Add this:
+  ```bash
+  vim ~/.bash_profile
+  ```
+  Add this:
 
     ```bash
-    export PATH=${PATH}:/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
-    export JAVA_HOME=$(/usr/libexec/java_home)
-    export PATH=${JAVA_HOME}/bin:$PATH
-    export PATH=/usr/local/bin:$PATH
-    ```
-    
-    With that, enter `source ~/.bash_profile` to update everything.
+  export PATH=${PATH}:/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
+  export JAVA_HOME=$(/usr/libexec/java_home)
+  export PATH=${JAVA_HOME}/bin:$PATH
+  export PATH=/usr/local/bin:$PATH
+  ```
+
+  With that, enter `source ~/.bash_profile` to update everything.
